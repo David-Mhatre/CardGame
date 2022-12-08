@@ -1,14 +1,17 @@
 public class Card {
+    // Instance variables for rank suit and point value of the cards
     private String rank;
     private String suit;
     private int points;
 
+    // Constructor for all variables
     public Card(String rank, String suit, int points){
         this.points = points;
         this.rank = rank;
         this.suit = suit;
     }
 
+    // Getter and setter methods for all of or instance variables
     public int getPoints() {
         return points;
     }
@@ -33,6 +36,7 @@ public class Card {
         this.suit = suit;
     }
 
+    // ToString Method to format our cards
     @Override
     public String toString() {
         return rank + " of " + suit;
