@@ -1,14 +1,18 @@
+import java.awt.*;
+
 public class Card {
     // Instance variables for rank suit and point value of the cards
     private String rank;
     private String suit;
     private int points;
+    CardView view;
 
     // Constructor for all variables
-    public Card(String rank, String suit, int points){
+    public Card(String rank, String suit, int points, CardView view){
         this.points = points;
         this.rank = rank;
         this.suit = suit;
+        this.view = view;
     }
 
     // Getter and setter methods for all of or instance variables
@@ -40,5 +44,9 @@ public class Card {
     @Override
     public String toString() {
         return rank + " of " + suit;
+    }
+
+    public void draw(Graphics g){
+
     }
 }

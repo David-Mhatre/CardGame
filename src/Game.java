@@ -8,14 +8,16 @@ public class Game {
     private int bjPoints;
     private Card current;
     Scanner s = new Scanner(System.in);
+    private CardView window;
     String[] ranks = {"Ace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
     String[] suits = {"Hearts", "Clubs", "Spades", "Diamonds"};
     int[] points = {1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10};
 
     // Game Constructor gets name of player and initializes all of our variables
     public Game(){
+        window = new CardView(this);
         players = new ArrayList<Player>();
-        dc = new Deck(ranks, suits, points);
+        dc = new Deck(ranks, suits, points, window);
         System.out.println("What is your name? ");
         String name = s.nextLine();
         Player p = new Player(name);
@@ -83,6 +85,7 @@ public class Game {
     // PlayGame method lets the house play and then after the first card calls hit until the player chooses to not hit
     // Or they bust
     public void playGame(){
+        window.repaint();
         int h = House();
         bjPoints = 0;
         printInstructions();
@@ -92,6 +95,7 @@ public class Game {
         bjPoints += current.getPoints();
         // Calls hit until the player busts or exits
         while (bjPoints < 22){
+            window.repaint();
            if (hit() == 0){
                break;
             }
