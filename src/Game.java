@@ -13,9 +13,11 @@ public class Game {
     String[] suits = {"Hearts", "Clubs", "Spades", "Diamonds"};
     int[] points = {1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10};
 
+    private ArrayList<Card> playerCards;
+    private ArrayList<Card> houseCards;
+
     // Game Constructor gets name of player and initializes all of our variables
     public Game(){
-        window = new CardView(this);
         players = new ArrayList<Player>();
         dc = new Deck(ranks, suits, points, window);
         System.out.println("What is your name? ");
@@ -23,6 +25,9 @@ public class Game {
         Player p = new Player(name);
         players.add(p);
         dc.shuffle();
+        playerCards = new ArrayList<Card>();
+        houseCards = new ArrayList<Card>();
+        window = new CardView(this);
     }
 
     // Prints the instructions to the console so the user knows how to play
@@ -41,6 +46,7 @@ public class Game {
             current = dc.deal();
             bjPoints += current.getPoints();
             System.out.println(current.toString());
+            playerCards.add(current);
             return 1;
         }
     }
@@ -52,6 +58,7 @@ public class Game {
         while (h < 18){
             current = dc.deal();
             h += current.getPoints();
+            houseCards.add(current);
         }
         // If house busts it will be zero so the user always wins unless they bust
         if (h > 21){
@@ -82,10 +89,18 @@ public class Game {
             }
         }
     }
+
+    public ArrayList<Card> getPlayerCards() {
+        return playerCards;
+    }
+
+    public ArrayList<Card> getHouseCards() {
+        return houseCards;
+    }
+
     // PlayGame method lets the house play and then after the first card calls hit until the player chooses to not hit
     // Or they bust
     public void playGame(){
-        window.repaint();
         int h = House();
         bjPoints = 0;
         printInstructions();
@@ -93,12 +108,13 @@ public class Game {
         current = dc.deal();
         System.out.println(current.toString());
         bjPoints += current.getPoints();
+        playerCards.add(current);
         // Calls hit until the player busts or exits
         while (bjPoints < 22){
-            window.repaint();
            if (hit() == 0){
                break;
             }
+            window.repaint();
         }
         Winner(h);
     }

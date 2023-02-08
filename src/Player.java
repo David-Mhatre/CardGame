@@ -1,10 +1,11 @@
 import java.util.ArrayList;
-
 public class Player {
     // Instance variables for how many cards left and our deck named cards
     private String name;
     private ArrayList<Card> hand;
     private int points;
+
+
 
     // Overloaded constructors one just gives player the name and one starts the player with a hand
     public Player(String name){

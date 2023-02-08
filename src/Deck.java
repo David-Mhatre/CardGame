@@ -7,16 +7,15 @@ public class Deck {
     // Instance variables for how many cards left and our deck named cards
     private int cardsLeft;
     private ArrayList<Card> cards;
-    private Image[] cardImages;
+    private Image cardImg;
 
     // Contractor adds cards to the deck based on the arrays we pass in
     public Deck(String[] ranks, String[] suits, int[] points, CardView window){
         cards = new ArrayList<Card>();
-        cardImages = new Image[52];
         for (int i = 0; i < ranks.length; i++){
             for (int j = 0; j < suits.length; j++){
-                Card p = new Card(ranks[i], suits[j], points[j], window);
-                cardImages[i] = new ImageIcon("resoucres/" + i + ".png").getImage();
+                cardImg = new ImageIcon("resoucres/" + i + ".png").getImage();
+                Card p = new Card(ranks[i], suits[j], points[j], window, cardImg);
                 cards.add(p);
                 cardsLeft++;
             }
@@ -57,7 +56,4 @@ public class Deck {
         cardsLeft = cards.size() - 1;
     }
 
-    public void draw(Graphics g){
-
-    }
 }

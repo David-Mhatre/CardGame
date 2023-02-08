@@ -23,7 +23,12 @@ public class CardView extends JFrame{
     public void paint(Graphics g){
         Image deck = new ImageIcon("resoucres/back.png").getImage();
         g.drawImage(deck, 50,50, this);
-
+        for(int i = 0; i < game.getHouseCards().size(); i++){
+            g.drawImage(game.getHouseCards().get(i).getCardImage(), 100 + 100 + game.getHouseCards().get(i).getCardImage().getWidth(this), 100, this);
+        }
+        for (int i = 0; i < game.getPlayerCards().size(); i++){
+            g.drawImage(game.getPlayerCards().get(i).getCardImage(), 100 + 100 + game.getPlayerCards().get(i).getCardImage().getWidth(this), 600, this);
+        }
     }
 
 }

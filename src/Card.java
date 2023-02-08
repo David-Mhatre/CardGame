@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.*;
 
 public class Card {
     // Instance variables for rank suit and point value of the cards
@@ -7,12 +9,15 @@ public class Card {
     private int points;
     CardView view;
 
+    private Image cardImage;
+
     // Constructor for all variables
-    public Card(String rank, String suit, int points, CardView view){
+    public Card(String rank, String suit, int points, CardView view, Image card){
         this.points = points;
         this.rank = rank;
         this.suit = suit;
         this.view = view;
+        cardImage = card;
     }
 
     // Getter and setter methods for all of or instance variables
@@ -46,7 +51,7 @@ public class Card {
         return rank + " of " + suit;
     }
 
-    public void draw(Graphics g){
-
+    public Image getCardImage() {
+        return cardImage;
     }
 }
