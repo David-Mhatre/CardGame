@@ -51,6 +51,7 @@ public class Card {
         return rank + " of " + suit;
     }
 
+    // Getter for the card image
     public Image getCardImage() {
         return cardImage;
     }

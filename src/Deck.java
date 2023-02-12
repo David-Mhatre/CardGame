@@ -12,12 +12,15 @@ public class Deck {
     // Contractor adds cards to the deck based on the arrays we pass in
     public Deck(String[] ranks, String[] suits, int[] points, CardView window){
         cards = new ArrayList<Card>();
+        int counter = 1;
         for (int i = 0; i < ranks.length; i++){
             for (int j = 0; j < suits.length; j++){
-                cardImg = new ImageIcon("resoucres/" + i + ".png").getImage();
-                Card p = new Card(ranks[i], suits[j], points[j], window, cardImg);
+                // Matches the card image with the created card
+                cardImg = new ImageIcon("resoucres/Cards/" + counter + ".png").getImage();
+                Card p = new Card(ranks[i], suits[j], points[i], window, cardImg);
                 cards.add(p);
                 cardsLeft++;
+                counter++;
             }
         }
     }
